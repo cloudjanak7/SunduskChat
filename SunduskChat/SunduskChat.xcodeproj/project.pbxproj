@@ -148,6 +148,10 @@
 		C21B79651DCA42A4004CC6E4 /* DDXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = C21B78971DCA42A4004CC6E4 /* DDXMLNode.m */; };
 		C21B79661DCA42A4004CC6E4 /* build-libidn.sh in Resources */ = {isa = PBXBuildFile; fileRef = C21B789B1DCA42A4004CC6E4 /* build-libidn.sh */; };
 		C21B79671DCA42A4004CC6E4 /* libidn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C21B789D1DCA42A4004CC6E4 /* libidn.a */; };
+		C21B796A1DCA4373004CC6E4 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C21B79691DCA4373004CC6E4 /* CFNetwork.framework */; };
+		C21B796C1DCA439D004CC6E4 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C21B796B1DCA439D004CC6E4 /* Security.framework */; };
+		C21B796E1DCA45CE004CC6E4 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C21B796D1DCA45CE004CC6E4 /* libxml2.tbd */; };
+		C21B79701DCA4609004CC6E4 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C21B796F1DCA4609004CC6E4 /* libresolv.tbd */; };
 		C2DC31441DC9F4920072C14F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DC31431DC9F4920072C14F /* main.m */; };
 		C2DC31471DC9F4920072C14F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DC31461DC9F4920072C14F /* AppDelegate.m */; };
 		C2DC314A1DC9F4920072C14F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DC31491DC9F4920072C14F /* ViewController.m */; };
@@ -450,6 +454,11 @@
 		C21B789D1DCA42A4004CC6E4 /* libidn.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libidn.a; sourceTree = "<group>"; };
 		C21B789E1DCA42A4004CC6E4 /* stringprep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stringprep.h; sourceTree = "<group>"; };
 		C21B78DA1DCA42A4004CC6E4 /* XMPPFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPFramework.h; sourceTree = "<group>"; };
+		C21B79691DCA4373004CC6E4 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		C21B796B1DCA439D004CC6E4 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		C21B796D1DCA45CE004CC6E4 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		C21B796F1DCA4609004CC6E4 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		C21B79721DCA46B4004CC6E4 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		C2DC313F1DC9F4920072C14F /* SunduskChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SunduskChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2DC31431DC9F4920072C14F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C2DC31451DC9F4920072C14F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -467,6 +476,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C21B79701DCA4609004CC6E4 /* libresolv.tbd in Frameworks */,
+				C21B796E1DCA45CE004CC6E4 /* libxml2.tbd in Frameworks */,
+				C21B796C1DCA439D004CC6E4 /* Security.framework in Frameworks */,
+				C21B796A1DCA4373004CC6E4 /* CFNetwork.framework in Frameworks */,
 				C21B79671DCA42A4004CC6E4 /* libidn.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1822,11 +1835,23 @@
 			path = Mac;
 			sourceTree = "<group>";
 		};
+		C21B79681DCA4373004CC6E4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C21B796F1DCA4609004CC6E4 /* libresolv.tbd */,
+				C21B796D1DCA45CE004CC6E4 /* libxml2.tbd */,
+				C21B796B1DCA439D004CC6E4 /* Security.framework */,
+				C21B79691DCA4373004CC6E4 /* CFNetwork.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C2DC31361DC9F4920072C14F = {
 			isa = PBXGroup;
 			children = (
 				C2DC31411DC9F4920072C14F /* SunduskChat */,
 				C2DC31401DC9F4920072C14F /* Products */,
+				C21B79681DCA4373004CC6E4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1859,6 +1884,7 @@
 			isa = PBXGroup;
 			children = (
 				C2DC31431DC9F4920072C14F /* main.m */,
+				C21B79721DCA46B4004CC6E4 /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -2186,6 +2212,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = SunduskChat/PrefixHeader.pch;
+				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = SunduskChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -2201,6 +2229,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = SunduskChat/PrefixHeader.pch;
+				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = SunduskChat/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
