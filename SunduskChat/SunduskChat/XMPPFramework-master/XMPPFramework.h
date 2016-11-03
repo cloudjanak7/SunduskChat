@@ -28,6 +28,26 @@
 // List the modules you're using here:
 // (the following may not be a complete list)
 
+/**
+ * 心跳检测模块
+ */
+#import "XMPPPing.h"      //客户端手动发送心跳包
+#import "XMPPAutoPing.h"  //客户端自动发送心跳包
+
+/**
+ * 自动重连模块
+ */
+#import "XMPPReconnect.h"
+
+/**
+ * 通讯录模块
+ */
+#import "XMPPRoster.h"  //花名册模块类
+#import "XMPPRosterMemoryStorage.h"    //通讯录内存存储器
+#import "XMPPRosterCoreDataStorage.h"  //通讯录磁盘缓存存储器(类似自己封装的CoreData的工具类)
+
+
+
 //#import "XMPPBandwidthMonitor.h"
 // 
 //#import "XMPPCoreDataStorage.h"

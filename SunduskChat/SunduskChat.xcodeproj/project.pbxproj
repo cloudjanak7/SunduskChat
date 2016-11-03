@@ -153,6 +153,9 @@
 		C21B796E1DCA45CE004CC6E4 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C21B796D1DCA45CE004CC6E4 /* libxml2.tbd */; };
 		C21B79701DCA4609004CC6E4 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C21B796F1DCA4609004CC6E4 /* libresolv.tbd */; };
 		C27F630B1DCACB8C0054FFFF /* CCQXMPPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C27F630A1DCACB8C0054FFFF /* CCQXMPPManager.m */; };
+		C2CDDFF71DCB618C003AFC33 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CDDFF61DCB618C003AFC33 /* Reachability.m */; };
+		C2CDDFFC1DCB63D1003AFC33 /* CCQContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CDDFFB1DCB63D1003AFC33 /* CCQContactsViewController.m */; };
+		C2CDDFFE1DCB63EF003AFC33 /* Root.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2CDDFFD1DCB63EF003AFC33 /* Root.storyboard */; };
 		C2DC31441DC9F4920072C14F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DC31431DC9F4920072C14F /* main.m */; };
 		C2DC31471DC9F4920072C14F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DC31461DC9F4920072C14F /* AppDelegate.m */; };
 		C2DC314A1DC9F4920072C14F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DC31491DC9F4920072C14F /* ViewController.m */; };
@@ -462,6 +465,11 @@
 		C21B79721DCA46B4004CC6E4 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		C27F63091DCACB8C0054FFFF /* CCQXMPPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCQXMPPManager.h; sourceTree = "<group>"; };
 		C27F630A1DCACB8C0054FFFF /* CCQXMPPManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCQXMPPManager.m; sourceTree = "<group>"; };
+		C2CDDFF51DCB618C003AFC33 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		C2CDDFF61DCB618C003AFC33 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		C2CDDFFA1DCB63D1003AFC33 /* CCQContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCQContactsViewController.h; sourceTree = "<group>"; };
+		C2CDDFFB1DCB63D1003AFC33 /* CCQContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCQContactsViewController.m; sourceTree = "<group>"; };
+		C2CDDFFD1DCB63EF003AFC33 /* Root.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Root.storyboard; sourceTree = "<group>"; };
 		C2DC313F1DC9F4920072C14F /* SunduskChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SunduskChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2DC31431DC9F4920072C14F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C2DC31451DC9F4920072C14F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1858,6 +1866,52 @@
 			name = Tools;
 			sourceTree = "<group>";
 		};
+		C2CDDFEF1DCB5EA6003AFC33 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				C2DC31481DC9F4920072C14F /* ViewController.h */,
+				C2DC31491DC9F4920072C14F /* ViewController.m */,
+				C2DC314B1DC9F4920072C14F /* Main.storyboard */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		C2CDDFF01DCB5EDD003AFC33 /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				C2CDDFF41DCB6165003AFC33 /* ReachAbility */,
+				C21B772E1DCA42A3004CC6E4 /* XMPPFramework-master */,
+			);
+			name = Lib;
+			sourceTree = "<group>";
+		};
+		C2CDDFF41DCB6165003AFC33 /* ReachAbility */ = {
+			isa = PBXGroup;
+			children = (
+				C2CDDFF51DCB618C003AFC33 /* Reachability.h */,
+				C2CDDFF61DCB618C003AFC33 /* Reachability.m */,
+			);
+			name = ReachAbility;
+			sourceTree = "<group>";
+		};
+		C2CDDFF81DCB632E003AFC33 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C2CDDFFD1DCB63EF003AFC33 /* Root.storyboard */,
+				C2CDDFF91DCB634D003AFC33 /* Contacts */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		C2CDDFF91DCB634D003AFC33 /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				C2CDDFFA1DCB63D1003AFC33 /* CCQContactsViewController.h */,
+				C2CDDFFB1DCB63D1003AFC33 /* CCQContactsViewController.m */,
+			);
+			name = Contacts;
+			sourceTree = "<group>";
+		};
 		C2DC31361DC9F4920072C14F = {
 			isa = PBXGroup;
 			children = (
@@ -1878,13 +1932,12 @@
 		C2DC31411DC9F4920072C14F /* SunduskChat */ = {
 			isa = PBXGroup;
 			children = (
+				C2CDDFF81DCB632E003AFC33 /* Controller */,
+				C2CDDFEF1DCB5EA6003AFC33 /* Login */,
+				C2CDDFF01DCB5EDD003AFC33 /* Lib */,
 				C243B3F11DCACB1800C1C58C /* Tools */,
-				C21B772E1DCA42A3004CC6E4 /* XMPPFramework-master */,
 				C2DC31451DC9F4920072C14F /* AppDelegate.h */,
 				C2DC31461DC9F4920072C14F /* AppDelegate.m */,
-				C2DC31481DC9F4920072C14F /* ViewController.h */,
-				C2DC31491DC9F4920072C14F /* ViewController.m */,
-				C2DC314B1DC9F4920072C14F /* Main.storyboard */,
 				C2DC314E1DC9F4920072C14F /* Assets.xcassets */,
 				C2DC31501DC9F4920072C14F /* LaunchScreen.storyboard */,
 				C2DC31531DC9F4920072C14F /* Info.plist */,
@@ -1960,6 +2013,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2CDDFFE1DCB63EF003AFC33 /* Root.storyboard in Resources */,
 				C21B79661DCA42A4004CC6E4 /* build-libidn.sh in Resources */,
 				C2DC31521DC9F4920072C14F /* LaunchScreen.storyboard in Resources */,
 				C2DC314F1DC9F4920072C14F /* Assets.xcassets in Resources */,
@@ -1986,6 +2040,7 @@
 				C21B79641DCA42A4004CC6E4 /* DDXMLElement.m in Sources */,
 				C21B79171DCA42A4004CC6E4 /* XMPPvCardCoreDataStorage.m in Sources */,
 				C21B78DD1DCA42A4004CC6E4 /* XMPPDeprecatedPlainAuthentication.m in Sources */,
+				C2CDDFFC1DCB63D1003AFC33 /* CCQContactsViewController.m in Sources */,
 				C21B79161DCA42A4004CC6E4 /* XMPPvCardAvatarCoreDataStorageObject.m in Sources */,
 				C27F630B1DCACB8C0054FFFF /* CCQXMPPManager.m in Sources */,
 				C21B790E1DCA42A4004CC6E4 /* XMPPRoomOccupantHybridMemoryStorageObject.m in Sources */,
@@ -2066,6 +2121,7 @@
 				C21B79311DCA42A4004CC6E4 /* XMPPCapabilitiesCoreDataStorage.m in Sources */,
 				C21B78EC1DCA42A4004CC6E4 /* XMPPParser.m in Sources */,
 				C21B79111DCA42A4004CC6E4 /* XMPPRoomOccupantMemoryStorageObject.m in Sources */,
+				C2CDDFF71DCB618C003AFC33 /* Reachability.m in Sources */,
 				C21B79081DCA42A4004CC6E4 /* XMPPRoomCoreDataStorage.m in Sources */,
 				C21B79561DCA42A4004CC6E4 /* XMPPStringPrep.m in Sources */,
 				C21B794A1DCA42A4004CC6E4 /* XMPPMessage+XEP_0224.m in Sources */,

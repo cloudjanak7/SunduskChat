@@ -16,6 +16,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"%@", NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject);
+    
 //登录
         [[CCQXMPPManager sharedManager] loginWithJID:[XMPPJID jidWithUser:@"lisi" domain:@"sundusk.iOS.cn" resource:@"iOS"] andPassword:@"123"];
     

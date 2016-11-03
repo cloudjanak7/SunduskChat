@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface CCQXMPPManager : NSObject
+//通讯录模块
+@property (nonatomic, strong) XMPPRoster *xmppRoster;
 // 单例
 + (instancetype) sharedManager;
 
