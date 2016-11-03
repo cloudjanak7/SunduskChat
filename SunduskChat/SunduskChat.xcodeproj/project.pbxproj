@@ -152,6 +152,7 @@
 		C21B796C1DCA439D004CC6E4 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C21B796B1DCA439D004CC6E4 /* Security.framework */; };
 		C21B796E1DCA45CE004CC6E4 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C21B796D1DCA45CE004CC6E4 /* libxml2.tbd */; };
 		C21B79701DCA4609004CC6E4 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C21B796F1DCA4609004CC6E4 /* libresolv.tbd */; };
+		C27F630B1DCACB8C0054FFFF /* CCQXMPPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C27F630A1DCACB8C0054FFFF /* CCQXMPPManager.m */; };
 		C2DC31441DC9F4920072C14F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DC31431DC9F4920072C14F /* main.m */; };
 		C2DC31471DC9F4920072C14F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DC31461DC9F4920072C14F /* AppDelegate.m */; };
 		C2DC314A1DC9F4920072C14F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DC31491DC9F4920072C14F /* ViewController.m */; };
@@ -459,6 +460,8 @@
 		C21B796D1DCA45CE004CC6E4 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		C21B796F1DCA4609004CC6E4 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		C21B79721DCA46B4004CC6E4 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		C27F63091DCACB8C0054FFFF /* CCQXMPPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCQXMPPManager.h; sourceTree = "<group>"; };
+		C27F630A1DCACB8C0054FFFF /* CCQXMPPManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCQXMPPManager.m; sourceTree = "<group>"; };
 		C2DC313F1DC9F4920072C14F /* SunduskChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SunduskChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2DC31431DC9F4920072C14F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C2DC31451DC9F4920072C14F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1846,6 +1849,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C243B3F11DCACB1800C1C58C /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				C27F63091DCACB8C0054FFFF /* CCQXMPPManager.h */,
+				C27F630A1DCACB8C0054FFFF /* CCQXMPPManager.m */,
+			);
+			name = Tools;
+			sourceTree = "<group>";
+		};
 		C2DC31361DC9F4920072C14F = {
 			isa = PBXGroup;
 			children = (
@@ -1866,6 +1878,7 @@
 		C2DC31411DC9F4920072C14F /* SunduskChat */ = {
 			isa = PBXGroup;
 			children = (
+				C243B3F11DCACB1800C1C58C /* Tools */,
 				C21B772E1DCA42A3004CC6E4 /* XMPPFramework-master */,
 				C2DC31451DC9F4920072C14F /* AppDelegate.h */,
 				C2DC31461DC9F4920072C14F /* AppDelegate.m */,
@@ -1974,6 +1987,7 @@
 				C21B79171DCA42A4004CC6E4 /* XMPPvCardCoreDataStorage.m in Sources */,
 				C21B78DD1DCA42A4004CC6E4 /* XMPPDeprecatedPlainAuthentication.m in Sources */,
 				C21B79161DCA42A4004CC6E4 /* XMPPvCardAvatarCoreDataStorageObject.m in Sources */,
+				C27F630B1DCACB8C0054FFFF /* CCQXMPPManager.m in Sources */,
 				C21B790E1DCA42A4004CC6E4 /* XMPPRoomOccupantHybridMemoryStorageObject.m in Sources */,
 				C21B790D1DCA42A4004CC6E4 /* XMPPRoomMessageHybridCoreDataStorageObject.m in Sources */,
 				C21B790B1DCA42A4004CC6E4 /* XMPPRoomHybrid.xcdatamodeld in Sources */,

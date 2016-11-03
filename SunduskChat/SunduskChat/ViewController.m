@@ -16,7 +16,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+//登录
+        [[CCQXMPPManager sharedManager] loginWithJID:[XMPPJID jidWithUser:@"lisi" domain:@"sundusk.iOS.cn" resource:@"iOS"] andPassword:@"123"];
+    
+//    //注册
+//    [[CCQXMPPManager sharedManager] registerWithJID:[XMPPJID jidWithUser:@"zhaoliu" domain:@"sundusk.iOS.cn" resource:@"iOS"] andPassword:@"123"];
+    
 }
 
 - (void)didReceiveMemoryWarning {
