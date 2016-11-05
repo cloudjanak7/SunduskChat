@@ -13,17 +13,21 @@
 #import "Reachability.h"
 
 static CCQXMPPManager *instance;
-@interface CCQXMPPManager ()<XMPPStreamDelegate, XMPPAutoPingDelegate, XMPPReconnectDelegate, XMPPRosterDelegate>
-// socket抽象类
-@property (strong , nonatomic) XMPPStream *xmppStream;
-// 密码
-@property (copy , nonatomic)NSString *password;
+@interface CCQXMPPManager ()<XMPPStreamDelegate, XMPPAutoPingDelegate, XMPPReconnectDelegate, XMPPRosterDelegate, NSFetchedResultsControllerDelegate, XMPPIncomingFileTransferDelegate>
+//密码
+@property (nonatomic, copy) NSString *password;
 //登录/注册的标记
 @property (nonatomic, assign, getter=isRegisterAccount) BOOL registerAccount;
 //心跳检测模块
 @property (nonatomic, strong) XMPPAutoPing *xmppAutoping;
 //自动重连模块
 @property (nonatomic, strong) XMPPReconnect *xmppReconnect;
+//通讯录查询控制器
+@property (nonatomic, strong) NSFetchedResultsController *rosterFetchController;
+//消息归档模块
+@property (nonatomic, strong) XMPPMessageArchiving *xmppMsgArchiving;
+//文件接收模块
+@property (nonatomic, strong) XMPPIncomingFileTransfer *xmppIncomingFT;
 @end
 
 @implementation CCQXMPPManager
@@ -77,6 +81,7 @@ static CCQXMPPManager *instance;
      * 自动重连模块
      */
     [self.xmppReconnect activate:self.xmppStream];
+    
     /**
      * 通讯录模块
      */
@@ -93,6 +98,30 @@ static CCQXMPPManager *instance;
     //设置是否自动接受已知的出席/订阅请求(简单理解为接受好友请求,如果想要区别好友的发起方,则该属性不能设置为YES)
     self.xmppRoster.autoAcceptKnownPresenceSubscriptionRequests = NO;
     [self.xmppRoster activate:self.xmppStream];
+    
+    /**
+     * 消息归档模块
+     */
+    //是否只归档客户端的消息(即使设置为NO,也要求客户端完整实现0136协议才可以实现离线消息同步)
+    self.xmppMsgArchiving.clientSideMessageArchivingOnly = YES;
+    [self.xmppMsgArchiving activate:self.xmppStream];
+    
+    /**
+     * 电子名片模块
+     */
+    [self.xmppvCardTemp activate:self.xmppStream];
+    
+    /**
+     * 头像模块
+     */
+    [self.xmppAvatar activate:self.xmppStream];
+    
+    /**
+     * 文件接收模块
+     */
+    //是否自动接收文件
+    self.xmppIncomingFT.autoAcceptFileTransfers = YES;
+    [self.xmppIncomingFT activate:self.xmppStream];
 }
 
 //连接
@@ -128,11 +157,59 @@ static CCQXMPPManager *instance;
     [self connectWithJID:jid andPassword:password];
 }
 
+#pragma mark - XMPPIncomingFileTransferDelegate
+
+//接收文件失败
+- (void)xmppIncomingFileTransfer:(XMPPIncomingFileTransfer *)sender didFailWithError:(NSError *)error{
+    
+}
+
+//接收到文件请求后调用  如果自动接收文件,则该方法不会响应
+- (void)xmppIncomingFileTransfer:(XMPPIncomingFileTransfer *)sender didReceiveSIOffer:(XMPPIQ *)offer{
+    
+}
+
+//接收到文件后调用
+- (void)xmppIncomingFileTransfer:(XMPPIncomingFileTransfer *)sender didSucceedWithData:(NSData *)data named:(NSString *)name{
+    
+    NSLog(@"接收到文件:%@", name);
+    //保存文件
+    [data writeToFile:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject stringByAppendingPathComponent:name] atomically:YES];
+}
+
+
+#pragma mark - NSFetchedResultsControllerDelegate
+
+//结果集发生变化后调用->间接监听到user表的变化
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controllerP{
+    //给通讯录控制器发通知
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"HMXMPPRosterDidChangeNote" object:nil userInfo:nil];
+}
+
+#pragma mark - 通讯录相关
+
+- (NSArray<XMPPUserCoreDataStorageObject *> *)reloadContactList{
+    
+    //执行查询
+    BOOL success = [self.rosterFetchController performFetch:nil];
+    if (success) {
+        
+        return self.rosterFetchController.fetchedObjects;
+        
+    }else {
+        NSLog(@"数据查询失败");
+        return nil;
+    }
+}
+
+
 #pragma mark - XMPPRosterDelegate
 
 //如果没有自动接受出席订阅请求,则接受到出席/订阅请求后会响应该方法
 - (void)xmppRoster:(XMPPRoster *)sender didReceivePresenceSubscriptionRequest:(XMPPPresence *)presence{
+    
     //需要在该方法中判断"我加别人"还是"别人加我"
+    
     //如果"我加别人",我们的客户端会保存添加记录(在CoreData),如果别人加我(在我没有做任何操作前,不会在数据库中记录)
     //需要根据user表中ask字段来判断(如果我加别人,该用户的ask字段为subscrib;如果别人加我,user表就根本没有该用户)
     
@@ -231,7 +308,6 @@ static CCQXMPPManager *instance;
 }
 
 
-
 #pragma mark - XMPPAutoPingDelegate
 
 //已经发送心跳包后调用
@@ -270,7 +346,6 @@ static CCQXMPPManager *instance;
         [self.xmppStream registerWithPassword:self.password error:nil];
         
     }else {
-        
         //进行登录 认证密码
         [self.xmppStream authenticateWithPassword:self.password error:nil];
     }
@@ -293,14 +368,13 @@ static CCQXMPPManager *instance;
     //将当前账号的在线状态发送给lisi(如果不设置to,则当前账号的所有好友都会收到当前账号的新状态)
     //    [XMPPPresence presenceWithType:@"available" to:[XMPPJID jidWithUser:@"lisi" domain:@"im.itcast.cn" resource:@"iOS"]];
     
-    //该方法默认设置type = available,并且变更的在线状态会发生给所有好友
+    //该方法默认设置type = available,并且变更的在线状态会发生给所有好友(pub-sub 发布订阅网络交互方式)
     XMPPPresence *presence = [XMPPPresence presence];
-    
     
     //设置presence的子节点
     //设置固定的在线状态
     [presence addChild:[DDXMLElement elementWithName:@"show" stringValue:@"dnd"]];
-    //设置自定义的在线状态(类似QQ的说说)  想要设置status必须写法Ian设置show,并且show中只有部分状态支持自定义状态
+    //设置自定义的在线状态(类似QQ的说说)  想要设置status必须先设置show,并且show中只有部分状态支持自定义状态
     [presence addChild:[DDXMLElement elementWithName:@"status" stringValue:@"最近手头紧~"]];
     
     //发送presence节给服务器 用来改变用户的在线状态
@@ -354,5 +428,116 @@ static CCQXMPPManager *instance;
     }
     return _xmppRoster;
 }
+
+- (NSFetchedResultsController *)rosterFetchController{
+    
+    if (_rosterFetchController == nil) {
+        
+        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"XMPPUserCoreDataStorageObject" inManagedObjectContext:[XMPPRosterCoreDataStorage sharedInstance].mainThreadManagedObjectContext];
+        [fetchRequest setEntity:entity];
+        // 设置谓词  我们自己约定出席+订阅才是好友
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"subscription = 'both'"];
+        [fetchRequest setPredicate:predicate];
+        // 设置排序  按照英文字母顺序
+        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"jidStr" ascending:YES];
+        [fetchRequest setSortDescriptors:[NSArray arrayWithObjects:sortDescriptor, nil]];
+        
+        _rosterFetchController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:[XMPPRosterCoreDataStorage sharedInstance].mainThreadManagedObjectContext sectionNameKeyPath:nil cacheName:nil];
+        
+        //设置代理 监听好友列表的变化
+        _rosterFetchController.delegate = self;
+    }
+    return _rosterFetchController;
+}
+
+
+- (XMPPMessageArchiving *)xmppMsgArchiving{
+    if (_xmppMsgArchiving == nil) {
+        _xmppMsgArchiving = [[XMPPMessageArchiving alloc] initWithMessageArchivingStorage:[XMPPMessageArchivingCoreDataStorage sharedInstance] dispatchQueue:dispatch_get_main_queue()];
+    }
+    return _xmppMsgArchiving;
+}
+
+- (XMPPvCardTempModule *)xmppvCardTemp{
+    if (_xmppvCardTemp == nil) {
+        _xmppvCardTemp = [[XMPPvCardTempModule alloc] initWithvCardStorage:[XMPPvCardCoreDataStorage sharedInstance] dispatchQueue:dispatch_get_main_queue()];
+    }
+    return _xmppvCardTemp;
+}
+
+- (XMPPvCardAvatarModule *)xmppAvatar{
+    
+    if (_xmppAvatar == nil) {
+        _xmppAvatar = [[XMPPvCardAvatarModule alloc] initWithvCardTempModule:self.xmppvCardTemp dispatchQueue:dispatch_get_main_queue()];
+    }
+    return _xmppAvatar;
+}
+
+- (XMPPIncomingFileTransfer *)xmppIncomingFT{
+    if (_xmppIncomingFT == nil) {
+        _xmppIncomingFT = [[XMPPIncomingFileTransfer alloc] initWithDispatchQueue:dispatch_get_main_queue()];
+        //设置代理 监听文件接收情况
+        [_xmppIncomingFT addDelegate:self delegateQueue:dispatch_get_main_queue()];
+    }
+    return _xmppIncomingFT;
+}
+
+
+///**
+// *  当结果集中的一个数据发生变化后调用
+// *
+// *  @param controller
+// *  @param anObject     发生变化的对象
+// *  @param indexPath    该对象在结果集中原来的位置
+// *  @param type         改变的类型(增删改)
+// *  @param newIndexPath 该对象在结果集中新的位置
+// */
+//- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(nullable NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(nullable NSIndexPath *)newIndexPath{
+//
+//}
+//
+///**
+// *  某个组发生变化时调用
+// *
+// *  @param controller   <#controller description#>
+// *  @param sectionInfo  <#sectionInfo description#>
+// *  @param sectionIndex <#sectionIndex description#>
+// *  @param type         <#type description#>
+// */
+//- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type{
+//
+//}
+//
+///**
+// *  结果集将要发生变化后调用
+// *
+// *  @param controller <#controller description#>
+// */
+//- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller{
+//
+//}
+//
+//
+///**
+// *  结果集将要发生变化后调用->上下文一定变了->数据库可能变了
+// *
+// *  @param controller
+// */
+//- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller{
+//
+//}
+//
+///**
+// *  设置组名时调用(可以通过分组功能实现通讯录,使用该方法来修改组名)
+// *
+// *  @param controller
+// *  @param sectionName
+// *
+// *  @return
+// */
+//- (nullable NSString *)controller:(NSFetchedResultsController *)controller sectionIndexTitleForSectionName:(NSString *)sectionName{
+//    
+//}
 
 @end

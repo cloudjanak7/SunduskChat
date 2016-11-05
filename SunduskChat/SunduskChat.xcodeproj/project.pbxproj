@@ -152,10 +152,15 @@
 		C21B796C1DCA439D004CC6E4 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C21B796B1DCA439D004CC6E4 /* Security.framework */; };
 		C21B796E1DCA45CE004CC6E4 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C21B796D1DCA45CE004CC6E4 /* libxml2.tbd */; };
 		C21B79701DCA4609004CC6E4 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C21B796F1DCA4609004CC6E4 /* libresolv.tbd */; };
+		C23F578E1DCE0BEC00C60BA7 /* CCQEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C23F578D1DCE0BEC00C60BA7 /* CCQEditViewController.m */; };
+		C23F57911DCE0BF700C60BA7 /* CCQDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C23F57901DCE0BF700C60BA7 /* CCQDetailTableViewController.m */; };
+		C23F57941DCE0C0300C60BA7 /* CCQMeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C23F57931DCE0C0300C60BA7 /* CCQMeTableViewController.m */; };
+		C23F57971DCE0C1800C60BA7 /* CCQRecentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C23F57961DCE0C1800C60BA7 /* CCQRecentViewController.m */; };
+		C23F579A1DCE0C2A00C60BA7 /* CCQChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C23F57991DCE0C2A00C60BA7 /* CCQChatViewController.m */; };
+		C23F579C1DCE0C8E00C60BA7 /* Root.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C23F579B1DCE0C8E00C60BA7 /* Root.storyboard */; };
 		C27F630B1DCACB8C0054FFFF /* CCQXMPPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C27F630A1DCACB8C0054FFFF /* CCQXMPPManager.m */; };
 		C2CDDFF71DCB618C003AFC33 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CDDFF61DCB618C003AFC33 /* Reachability.m */; };
 		C2CDDFFC1DCB63D1003AFC33 /* CCQContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CDDFFB1DCB63D1003AFC33 /* CCQContactsViewController.m */; };
-		C2CDDFFE1DCB63EF003AFC33 /* Root.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2CDDFFD1DCB63EF003AFC33 /* Root.storyboard */; };
 		C2DC31441DC9F4920072C14F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DC31431DC9F4920072C14F /* main.m */; };
 		C2DC31471DC9F4920072C14F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DC31461DC9F4920072C14F /* AppDelegate.m */; };
 		C2DC314A1DC9F4920072C14F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DC31491DC9F4920072C14F /* ViewController.m */; };
@@ -463,13 +468,23 @@
 		C21B796D1DCA45CE004CC6E4 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		C21B796F1DCA4609004CC6E4 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		C21B79721DCA46B4004CC6E4 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		C23F578C1DCE0BEC00C60BA7 /* CCQEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCQEditViewController.h; sourceTree = "<group>"; };
+		C23F578D1DCE0BEC00C60BA7 /* CCQEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCQEditViewController.m; sourceTree = "<group>"; };
+		C23F578F1DCE0BF700C60BA7 /* CCQDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCQDetailTableViewController.h; sourceTree = "<group>"; };
+		C23F57901DCE0BF700C60BA7 /* CCQDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCQDetailTableViewController.m; sourceTree = "<group>"; };
+		C23F57921DCE0C0300C60BA7 /* CCQMeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCQMeTableViewController.h; sourceTree = "<group>"; };
+		C23F57931DCE0C0300C60BA7 /* CCQMeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCQMeTableViewController.m; sourceTree = "<group>"; };
+		C23F57951DCE0C1800C60BA7 /* CCQRecentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCQRecentViewController.h; sourceTree = "<group>"; };
+		C23F57961DCE0C1800C60BA7 /* CCQRecentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCQRecentViewController.m; sourceTree = "<group>"; };
+		C23F57981DCE0C2A00C60BA7 /* CCQChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCQChatViewController.h; sourceTree = "<group>"; };
+		C23F57991DCE0C2A00C60BA7 /* CCQChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCQChatViewController.m; sourceTree = "<group>"; };
+		C23F579B1DCE0C8E00C60BA7 /* Root.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Root.storyboard; sourceTree = "<group>"; };
 		C27F63091DCACB8C0054FFFF /* CCQXMPPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCQXMPPManager.h; sourceTree = "<group>"; };
 		C27F630A1DCACB8C0054FFFF /* CCQXMPPManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCQXMPPManager.m; sourceTree = "<group>"; };
 		C2CDDFF51DCB618C003AFC33 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		C2CDDFF61DCB618C003AFC33 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		C2CDDFFA1DCB63D1003AFC33 /* CCQContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCQContactsViewController.h; sourceTree = "<group>"; };
 		C2CDDFFB1DCB63D1003AFC33 /* CCQContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCQContactsViewController.m; sourceTree = "<group>"; };
-		C2CDDFFD1DCB63EF003AFC33 /* Root.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Root.storyboard; sourceTree = "<group>"; };
 		C2DC313F1DC9F4920072C14F /* SunduskChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SunduskChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2DC31431DC9F4920072C14F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C2DC31451DC9F4920072C14F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1857,6 +1872,64 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C23F57851DCE0AF500C60BA7 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				C23F57861DCE0B3B00C60BA7 /* Edit */,
+				C23F57881DCE0B5800C60BA7 /* Info */,
+				C23F57891DCE0B7300C60BA7 /* Me */,
+				C23F578A1DCE0B8100C60BA7 /* Recent */,
+				C23F578B1DCE0B9100C60BA7 /* Chat */,
+				C2CDDFF91DCB634D003AFC33 /* Contacts */,
+			);
+			name = Root;
+			sourceTree = "<group>";
+		};
+		C23F57861DCE0B3B00C60BA7 /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				C23F578C1DCE0BEC00C60BA7 /* CCQEditViewController.h */,
+				C23F578D1DCE0BEC00C60BA7 /* CCQEditViewController.m */,
+			);
+			name = Edit;
+			sourceTree = "<group>";
+		};
+		C23F57881DCE0B5800C60BA7 /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				C23F578F1DCE0BF700C60BA7 /* CCQDetailTableViewController.h */,
+				C23F57901DCE0BF700C60BA7 /* CCQDetailTableViewController.m */,
+			);
+			name = Info;
+			sourceTree = "<group>";
+		};
+		C23F57891DCE0B7300C60BA7 /* Me */ = {
+			isa = PBXGroup;
+			children = (
+				C23F57921DCE0C0300C60BA7 /* CCQMeTableViewController.h */,
+				C23F57931DCE0C0300C60BA7 /* CCQMeTableViewController.m */,
+			);
+			name = Me;
+			sourceTree = "<group>";
+		};
+		C23F578A1DCE0B8100C60BA7 /* Recent */ = {
+			isa = PBXGroup;
+			children = (
+				C23F57951DCE0C1800C60BA7 /* CCQRecentViewController.h */,
+				C23F57961DCE0C1800C60BA7 /* CCQRecentViewController.m */,
+			);
+			name = Recent;
+			sourceTree = "<group>";
+		};
+		C23F578B1DCE0B9100C60BA7 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				C23F57981DCE0C2A00C60BA7 /* CCQChatViewController.h */,
+				C23F57991DCE0C2A00C60BA7 /* CCQChatViewController.m */,
+			);
+			name = Chat;
+			sourceTree = "<group>";
+		};
 		C243B3F11DCACB1800C1C58C /* Tools */ = {
 			isa = PBXGroup;
 			children = (
@@ -1897,8 +1970,9 @@
 		C2CDDFF81DCB632E003AFC33 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				C2CDDFFD1DCB63EF003AFC33 /* Root.storyboard */,
-				C2CDDFF91DCB634D003AFC33 /* Contacts */,
+				C23F57851DCE0AF500C60BA7 /* Root */,
+				C23F579B1DCE0C8E00C60BA7 /* Root.storyboard */,
+				C2CDDFEF1DCB5EA6003AFC33 /* Login */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -1932,10 +2006,9 @@
 		C2DC31411DC9F4920072C14F /* SunduskChat */ = {
 			isa = PBXGroup;
 			children = (
-				C2CDDFF81DCB632E003AFC33 /* Controller */,
-				C2CDDFEF1DCB5EA6003AFC33 /* Login */,
-				C2CDDFF01DCB5EDD003AFC33 /* Lib */,
 				C243B3F11DCACB1800C1C58C /* Tools */,
+				C2CDDFF81DCB632E003AFC33 /* Controller */,
+				C2CDDFF01DCB5EDD003AFC33 /* Lib */,
 				C2DC31451DC9F4920072C14F /* AppDelegate.h */,
 				C2DC31461DC9F4920072C14F /* AppDelegate.m */,
 				C2DC314E1DC9F4920072C14F /* Assets.xcassets */,
@@ -2013,7 +2086,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2CDDFFE1DCB63EF003AFC33 /* Root.storyboard in Resources */,
+				C23F579C1DCE0C8E00C60BA7 /* Root.storyboard in Resources */,
 				C21B79661DCA42A4004CC6E4 /* build-libidn.sh in Resources */,
 				C2DC31521DC9F4920072C14F /* LaunchScreen.storyboard in Resources */,
 				C2DC314F1DC9F4920072C14F /* Assets.xcassets in Resources */,
@@ -2108,11 +2181,13 @@
 				C21B78E81DCA42A4004CC6E4 /* XMPPIQ.m in Sources */,
 				C21B790A1DCA42A4004CC6E4 /* XMPPRoomOccupantCoreDataStorageObject.m in Sources */,
 				C21B792C1DCA42A4004CC6E4 /* XMPPMessage+XEP_0085.m in Sources */,
+				C23F579A1DCE0C2A00C60BA7 /* CCQChatViewController.m in Sources */,
 				C21B792B1DCA42A4004CC6E4 /* XMPPDateTimeProfiles.m in Sources */,
 				C21B78EE1DCA42A4004CC6E4 /* XMPPStream.m in Sources */,
 				C21B79271DCA42A4004CC6E4 /* XMPPIQ+XEP_0066.m in Sources */,
 				C21B79021DCA42A4004CC6E4 /* XMPPIQ+JabberRPCResonse.m in Sources */,
 				C21B79221DCA42A4004CC6E4 /* NSXMLElement+XEP_0059.m in Sources */,
+				C23F57971DCE0C1800C60BA7 /* CCQRecentViewController.m in Sources */,
 				C21B79591DCA42A4004CC6E4 /* DDAbstractDatabaseLogger.m in Sources */,
 				C21B79261DCA42A4004CC6E4 /* TURNSocket.m in Sources */,
 				C21B78E51DCA42A4004CC6E4 /* NSXMLElement+XMPP.m in Sources */,
@@ -2133,14 +2208,17 @@
 				C21B79051DCA42A4004CC6E4 /* XMPPLastActivity.m in Sources */,
 				C21B79381DCA42A4004CC6E4 /* XMPPMessageArchivingCoreDataStorage.m in Sources */,
 				C21B79321DCA42A4004CC6E4 /* XMPPCapsCoreDataStorageObject.m in Sources */,
+				C23F578E1DCE0BEC00C60BA7 /* CCQEditViewController.m in Sources */,
 				C21B78E11DCA42A4004CC6E4 /* XMPPXFacebookPlatformAuthentication.m in Sources */,
 				C21B79191DCA42A4004CC6E4 /* XMPPvCardTempCoreDataStorageObject.m in Sources */,
 				C21B78F91DCA42A4004CC6E4 /* XMPPRoster.xcdatamodel in Sources */,
 				C21B79341DCA42A4004CC6E4 /* XMPPCapabilities.m in Sources */,
+				C23F57911DCE0BF700C60BA7 /* CCQDetailTableViewController.m in Sources */,
 				C21B79011DCA42A4004CC6E4 /* XMPPIQ+JabberRPC.m in Sources */,
 				C21B79331DCA42A4004CC6E4 /* XMPPCapsResourceCoreDataStorageObject.m in Sources */,
 				C21B79141DCA42A4004CC6E4 /* XMPPRoom.m in Sources */,
 				C21B78F21DCA42A4004CC6E4 /* XMPPIncomingFileTransfer.m in Sources */,
+				C23F57941DCE0C0300C60BA7 /* CCQMeTableViewController.m in Sources */,
 				C21B793E1DCA42A4004CC6E4 /* XMPPMessageDeliveryReceipts.m in Sources */,
 				C21B78FB1DCA42A4004CC6E4 /* XMPPUserCoreDataStorageObject.m in Sources */,
 				C21B795F1DCA42A4004CC6E4 /* DDDispatchQueueLogFormatter.m in Sources */,

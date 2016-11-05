@@ -28,6 +28,7 @@
 // List the modules you're using here:
 // (the following may not be a complete list)
 
+
 /**
  * 心跳检测模块
  */
@@ -45,6 +46,28 @@
 #import "XMPPRoster.h"  //花名册模块类
 #import "XMPPRosterMemoryStorage.h"    //通讯录内存存储器
 #import "XMPPRosterCoreDataStorage.h"  //通讯录磁盘缓存存储器(类似自己封装的CoreData的工具类)
+
+/**
+ * 消息归档模块
+ */
+#import "XMPPMessageArchiving.h"
+#import "XMPPMessageArchivingCoreDataStorage.h" //消息归档磁盘存储器
+
+/**
+ * 电子名片缓存模块  (头像模块基于电子名片模块的,xmppframework有个bug,导致使用电子名片模块也需要使用头像模块,所以我们使用时二者一起激活)
+ */
+#import "XMPPvCardTempModule.h"
+#import "XMPPvCardCoreDataStorage.h"  //电子名片磁盘存储器
+#import "XMPPvCardTemp.h"
+
+/**
+ * 头像模块
+ */
+#import "XMPPvCardAvatarModule.h"
+
+#import "XMPPFileTransfer.h"
+#import "XMPPOutgoingFileTransfer.h" //文件发送模块
+#import "XMPPIncomingFileTransfer.h" //文件接收模块
 
 
 
